@@ -1,0 +1,14 @@
+.employees {
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: .5rem 1rem;
+    margin: 1rem 0 0 0;
+    transition: opacity .5s ease;
+    width:fit-content;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.formcontainer {
+    width: 250px;
+}
