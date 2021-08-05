@@ -1,14 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+
+.container-fluid {
+    background-image: url(https://th.bing.com/th/id/R.254cd4d39e095927e28fdd852382bc42?rik=zl0MGH5f0Cob5w&riu=http%3a%2f%2froundrock.legistar.com%2fImages%2fROUN%2froundrock-texas-banners.png&ehk=Kyy6sF%2b2%2b9BceL4tj1rR9IohJRoy%2flTSitpvrYGir%2fM%3d&risl=&pid=ImgRaw&r=0);
+    height: 2in;
+    padding-top: 1in;
+    font-family: 'Rajdhani', sans-serif;
+    color: rgb(189, 49, 30);
+    }
+
+.formcontainer {
+    border: 3px solid rgb(72, 85, 209);
+    display:grid;
+    justify-content:space-evenly;
+    background-color: rgb(226, 187, 187);
+    width:auto;
+}
+
 .employees {
-    border: 1px solid #ccc;
-    list-style: none;
+    border: 3px solid rgb(72, 85, 209);
     padding: .5rem 1rem;
     margin: 1rem 0 0 0;
-    transition: opacity .5s ease;
     width:fit-content;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-.formcontainer {
-    width: 250px;
+    display:inline-block;
+    justify-content: space-between;
+    background-color: rgb(226, 187, 187);
 }
