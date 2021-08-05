@@ -3,10 +3,15 @@ const container = document.querySelector('.container')
 
 createContainer()
 getData()
-loadEventListeners()
+postEmployee()
+loadEventListenersGet()
 
-function loadEventListeners() {
+function loadEventListenersGet() {
     btn.addEventListener('click', getData)
+}
+
+function loadEventListenersPost() {
+    document.getElementsByClassName("form-inline").addEventListener("click", postEmployee());
 }
 
 async function getData() {
