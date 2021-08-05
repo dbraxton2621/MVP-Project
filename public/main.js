@@ -5,14 +5,7 @@ createContainer()
 getData()
 postEmployee()
 loadEventListenersGet()
-
-function loadEventListenersGet() {
-    btn.addEventListener('click', getData)
-}
-
-function loadEventListenersPost() {
-    document.getElementsByClassName("form-inline").addEventListener("click", postEmployee());
-}
+loadEventListenersPost()
 
 async function getData() {
     const res = await fetch('/api/employees')
@@ -41,16 +34,33 @@ async function postEmployee(url = '', data = {}) {
         body: JSON.stringify(data)
     })
     return response.json()
+    console.log(data)
 }
 
+function loadEventListenersGet() {
+    btn.addEventListener('click', getData)
+}
 
-
-
-// function paintScreen(data) {
-//     for(let i = 0; i < data.length; i++) {
-//         let current = data[i]
-//         const div = document.createElement('div')
-//         div.textContent = current
-//         container.appendChild(div)
-//     }
-// }
+function loadEventListenersPost() {
+    $(".btn btn-primary").on('click', () => {
+        const firstName = $('#first_name').val()
+        const lastName = $('#last_name').val()
+        const badgeNumber = $('#badge_number').val()
+        const whatDepartment = $('#department').val()
+        const employmentStartDate = $('#employment_start_date').val()
+        const whatRank = $('#rank').val()
+        if (textInput.length === 0) {
+            $('.error').show()
+            $('.error').text('Oops!! Please enter item')
+        } else {
+            let lastOfficer = $(`.employees`).children().last().attr('id')
+            //if there is not 
+            if (lastOfficer === undefined) {
+                lastOfficer = 1;
+                var newDiv = 
+                postEmployee('/api/employee', {first_name: firstName, last_name: lastName, badge_number: badgeNumber, department: whatDepartment, employment_start_date: employmentStartDate, rank: whatRank})
+            }
+        }
+    });
+    
+}

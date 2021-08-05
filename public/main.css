@@ -6,7 +6,7 @@
     padding-top: 1in;
     font-family: 'Rajdhani', sans-serif;
     color: rgb(189, 49, 30);
-    }
+}
 
 .formcontainer {
     border: 3px solid rgb(72, 85, 209);
@@ -24,4 +24,7 @@
     display:inline-block;
     justify-content: space-between;
     background-color: rgb(226, 187, 187);
+}
+body {
+    background-color: lightskyblue;
 }

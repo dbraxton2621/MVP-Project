@@ -17,9 +17,9 @@
         <h1 class="container-fluid" id="logo">Round Rock Police Department <span id='highlight'></span> </h1>
     </center>
     <div class="formcontainer"
-    <form class="form-inline" method=post action="/api/employees">
+    <form class="form-inline">
         <label for="first_name">First Name:</label>
-        <input type="text" class="form-control" placeholder="First Name" id="irst_name" required>
+        <input type="text" class="form-control" placeholder="First Name" id="first_name" required>
         <label for="last_name">Last Name:</label>
         <input type="text" class="form-control" placeholder="Last Name" id="last_name" required>
         <label for="badge_number">Badge Number:</label>
@@ -27,7 +27,7 @@
         <label for="department">Department:</label>
         <input type="text" class="form-control" placeholder="Department" id="department" required>
         <label for="employment_start_date">Employment Start Date:</label>
-        <input type="character" class="form-control" placeholder="YYYY/MM/DD" id="employment_start_date" required>
+        <input type="date" class="form-control" placeholder="YYYY/MM/DD" id="employment_start_date" required>
         <label for="rank">Rank:</label>
         <input type="text" class="form-control" placeholder="Enter rank" id="rank" required>
         <button type="submit" class="btn btn-primary">Submit Officer</button>
