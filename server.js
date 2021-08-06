@@ -1,8 +1,10 @@
 // require('dotenv').config()
-const express = require('express')
+const express = require('express');
 const app = express();
-const {Pool} = require('pg')
-const pool = require('./db/db_configuration')
+const {Pool} = require('pg');
+const pool = require('./db/db_configuration');
+const cool = require('cool-ascii-faces');
+const path = require('path');
 const cors = require("cors")
 
 const PORT = process.env.PORT || 8000
