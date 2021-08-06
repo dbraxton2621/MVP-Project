@@ -1,5 +1,5 @@
-// postEmployee()
 getData()
+
 async function getData() {
     const res = await fetch('/api/employees')
     const data = await res.json() 
@@ -7,7 +7,6 @@ async function getData() {
 }
 
 function addOfficer(data) {
-    //[{},{},{}]
     console.log(data)
     for (let i of data) {
         let div = $('<div></div>')
@@ -16,7 +15,6 @@ function addOfficer(data) {
         $('.container').append(div) 
     }
 }
-
 
 async function postEmployee(url = '', data = {}) {
     const response = await fetch(url, {
@@ -29,13 +27,6 @@ async function postEmployee(url = '', data = {}) {
     })
     return response.json()
 }
-
-
-function loadEventListenersGet() {
-    const btn = document.querySelector('#btn')
-    btn.addEventListener('click', getData)
-}
-loadEventListenersGet()
 
 function loadEventListenersPost() {
     const submitbtn = document.querySelector('.submitbtn')
@@ -51,9 +42,17 @@ async function postEmployees() {
     const department = $('#department').val()
     const employment_start_date = $('#employment_start_date').val()
     const rank = $('#rank').val()
-    let lastOfficer = $(`.employees`).children().last().attr('id')
     addOfficer([{first_name, last_name, badge_number, department, employment_start_date, rank}])
     alert(`Added officer ${rank} ${first_name} ${last_name}.`);
     postEmployee('/api/employees', {first_name, last_name, badge_number, department, employment_start_date, rank})  
 }     
 
+async function deleteTaskItem(url = '') {
+    const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    return response.json()
+}
