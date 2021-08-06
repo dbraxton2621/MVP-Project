@@ -19,12 +19,12 @@ app.get('/api/employees', async (req, res) => {
     })
 })
 // GET ONE ITEM
-app.get('/api/employees/:stuff', async (request, response) => {
-    const { stuff } = request.params;
+app.get('/api/employees/:id', async (request, response) => {
+    const { id } = request.params;
     console.log('this will be the stuff value', stuff)
     try {
-        const insertCmd = await pool.query('SELECT * FROM employees WHERE employee_id = $1', [stuff]);
-        response.status(201).send(insertCmd.rows)
+        const insertCmd = await pool.query('SELECT * FROM employees WHERE employee_id = $1', [id]);
+        response.status(201).json(insertCmd.rows)
     } catch (error) {
         console.log('Server error', error)
         response.status(500).json(error)
@@ -39,21 +39,20 @@ app.post('/api/employees', async (request, response) => {
         const values = [first_name, last_name, badge_number, department, employment_start_date, rank]
         const insertCmd = await pool.query(employeeInfo, values)
         console.log('This is the insert var', insertCmd.rows)
-        response.status(201).send(insertCmd)
+        response.status(201).json(insertCmd)
     } catch (error) {
         console.log('Server error', error)
         response.status(500).json(error)
     }
 })
 // DELETE
-app.delete('/api/employees/:fired', async (request, response) => {
+app.delete('/api/employees/:id', async (request, response) => {
     try {
-        const { fired } = request.params;
-        console.log('This is my fired var', fired)
+        const { id } = request.params;
+        console.log('This is my fired var', id)
         const deleteCmd = 'DELETE FROM employees WHERE employee_id = $1 RETURNING *'
-        let { rows } = await pool.query(deleteCmd, [fired]);
+        let { rows } = await pool.query(deleteCmd, [id]);
         response.status(200).json(rows[0])
-        console.log(rows[0])
     } catch (error) {
         console.log('Server error', error)
         response.status(500).json(error)

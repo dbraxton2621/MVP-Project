@@ -1,28 +1,22 @@
-const btn = document.querySelector('#btn')
-const container = document.querySelector('.container')
-
-createContainer()
+// postEmployee()
 getData()
-postEmployee()
-loadEventListenersGet()
-loadEventListenersPost()
-
 async function getData() {
     const res = await fetch('/api/employees')
     const data = await res.json() 
+    addOfficer(data)
+}
+
+function addOfficer(data) {
+    //[{},{},{}]
+    console.log(data)
     for (let i of data) {
         let div = $('<div></div>')
         div.attr('class', 'employees')
-        div.html(`First Name: ${i.first_name}<br> LastName: ${i.last_name}<br>  Badge Number: ${i.badge_number} <br> ${i.department} <br> ${i.rank}`)
-        $('#container').append(div) 
+        div.html(`First Name: ${i.first_name}<br> LastName: ${i.last_name}<br>  Badge Number: ${i.badge_number} <br> ${i.department} <br> ${i.employment_start_date} <br> ${i.rank}`)
+        $('.container').append(div) 
     }
 }
 
-function createContainer() {
-    let container = $('<div></div>')
-    container.attr('id', 'container')
-    $('body').append(container)
-}
 
 async function postEmployee(url = '', data = {}) {
     const response = await fetch(url, {
@@ -34,33 +28,32 @@ async function postEmployee(url = '', data = {}) {
         body: JSON.stringify(data)
     })
     return response.json()
-    console.log(data)
 }
+
 
 function loadEventListenersGet() {
+    const btn = document.querySelector('#btn')
     btn.addEventListener('click', getData)
 }
+loadEventListenersGet()
 
 function loadEventListenersPost() {
-    $(".btn btn-primary").on('click', () => {
-        const firstName = $('#first_name').val()
-        const lastName = $('#last_name').val()
-        const badgeNumber = $('#badge_number').val()
-        const whatDepartment = $('#department').val()
-        const employmentStartDate = $('#employment_start_date').val()
-        const whatRank = $('#rank').val()
-        if (textInput.length === 0) {
-            $('.error').show()
-            $('.error').text('Oops!! Please enter item')
-        } else {
-            let lastOfficer = $(`.employees`).children().last().attr('id')
-            //if there is not 
-            if (lastOfficer === undefined) {
-                lastOfficer = 1;
-                var newDiv = 
-                postEmployee('/api/employee', {first_name: firstName, last_name: lastName, badge_number: badgeNumber, department: whatDepartment, employment_start_date: employmentStartDate, rank: whatRank})
-            }
-        }
-    });
-    
+    const submitbtn = document.querySelector('.submitbtn')
+    submitbtn.addEventListener('click', postEmployees)
+    console.log('This button is working')
 }
+loadEventListenersPost()
+
+async function postEmployees() {
+    const first_name = $('#first_name').val()
+    const last_name = $('#last_name').val()
+    const badge_number = $('#badge_number').val()
+    const department = $('#department').val()
+    const employment_start_date = $('#employment_start_date').val()
+    const rank = $('#rank').val()
+    let lastOfficer = $(`.employees`).children().last().attr('id')
+    addOfficer([{first_name, last_name, badge_number, department, employment_start_date, rank}])
+    alert(`Added officer ${rank} ${first_name} ${last_name}.`);
+    postEmployee('/api/employees', {first_name, last_name, badge_number, department, employment_start_date, rank})  
+}     
+
