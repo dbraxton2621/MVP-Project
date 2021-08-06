@@ -43,7 +43,7 @@ async function postEmployees() {
     const employment_start_date = $('#employment_start_date').val()
     const rank = $('#rank').val()
     addOfficer([{first_name, last_name, badge_number, department, employment_start_date, rank}])
-    alert(`Added officer ${rank} ${first_name} ${last_name}.`);
+    alert(`Added ${rank} ${first_name} ${last_name}.`);
     postEmployee('/api/employees', {first_name, last_name, badge_number, department, employment_start_date, rank})  
 }     
 
